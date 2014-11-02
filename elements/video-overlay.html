@@ -1,7 +1,72 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="video-overlay" noscript>
+<polymer-element name="video-overlay" attributes="thumbnail video">
   <template>
-    <span>Hello from <b>my-element</b>. This is my Shadow DOM.</span>
+    <style>
+      #thumbnail:hover {
+        cursor:pointer;
+      }
+      #overlay {
+        display:none;
+        position:absolute;
+        top:0;
+        right:0;
+        left:0;
+        bottom:0;
+        background:rgba(0,0,0,.5);
+      }
+      #embed-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -94px;
+        margin-left: -160px;
+        width: 320px;
+        height: 188px;
+      }
+      @media (min-width: 500px) {
+        #embed-wrap {
+          margin-top: -140px;
+          margin-left: -250px;
+          width: 500px;
+          height: 290px;
+        }
+      }
+      @media (min-width: 800px) {
+        #embed-wrap {
+          margin-top: -229px;
+          margin-left: -400px;
+          width: 800px;
+          height: 458px;
+        }
+      }
+      #embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <img id="thumbnail" src="{{thumbnail}}" on-click="{{popOutVideo}}" />
+    <div id="overlay" on-click="{{hideOverlay}}">
+      <div id="embed-wrap">
+        <iframe src="" id="embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+    </div>
   </template>
+  <script>
+    Polymer({
+      thumbnail: "http://bradclapper.com/img/thumbnails/space-battles.jpg",
+      video: "//player.vimeo.com/video/29611895",
+      popOutVideo: function() {
+        this.$.overlay.style.display = "block";
+        this.$.embed.src = this.video;
+      },
+      hideOverlay:  function() {
+        this.$.overlay.style.display = "none";
+        this.$.embed.src = "";
+      }
+    });
+  </script>
 </polymer-element>
