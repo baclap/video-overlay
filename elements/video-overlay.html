@@ -1,11 +1,41 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/core-icons/av-icons.html">
 
 <polymer-element name="video-overlay" attributes="thumbnail video">
   <template>
     <style>
-      #thumbnail:hover {
+      /* <video-overlay> */
+      :host {
+        display:inline-block;
+        line-height:0;
+        color:#fff;
+      }
+
+      /* THUMBNAIL */
+      #thumbnail-wrap {
+        display:inline-block;
+        position:relative;
+        line-height:0;
+      }
+      #thumbnail-wrap:hover {
         cursor:pointer;
       }
+      #thumbnail-wrap:hover #play-arrow {
+        opacity:1;
+      }
+      #play-arrow {
+        width:100px;
+        height:100px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin:-50px 0 0 -50px;
+        opacity:.5;
+        transition:all 1s;
+      }
+
+      /* OVERLAY */
       #overlay {
         display:none;
         position:absolute;
@@ -47,12 +77,29 @@
         width: 100%;
         height: 100%;
       }
+      #close-overlay {
+        position:absolute;
+        top:10px;
+        right:10px;
+        width:30px;
+        height:30px;
+        opacity:1;
+        transition:all 1s;
+      }
+      #close-overlay:hover {
+        cursor:pointer;
+        opacity:.5;
+      }
     </style>
-    <img id="thumbnail" src="{{thumbnail}}" on-click="{{popOutVideo}}" />
+    <div id="thumbnail-wrap" on-click="{{popOutVideo}}">
+      <img id="thumbnail" src="{{thumbnail}}" />
+      <core-icon id="play-arrow" icon="av:play-circle-fill"></core-icon>
+    </div>
     <div id="overlay" on-click="{{hideOverlay}}">
       <div id="embed-wrap">
         <iframe src="" id="embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
+      <core-icon id="close-overlay" icon="cancel"></core-icon>
     </div>
   </template>
   <script>
