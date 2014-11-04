@@ -21,8 +21,11 @@
       #thumbnail-wrap:hover {
         cursor:pointer;
       }
-      #thumbnail-wrap:hover #play-arrow {
-        opacity:1;
+      #thumbnail {
+        transition:all 1s;
+      }
+      #thumbnail-wrap:hover #thumbnail {
+        opacity:.75;
       }
       #play-arrow {
         width:100px;
@@ -33,6 +36,9 @@
         margin:-50px 0 0 -50px;
         opacity:.5;
         transition:all 1s;
+      }
+      #thumbnail-wrap:hover #play-arrow {
+        opacity:1;
       }
 
       /* OVERLAY */
