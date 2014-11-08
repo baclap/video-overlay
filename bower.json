@@ -5,6 +5,12 @@
     "Brett Clapper <clapperbrett@gmail.com>"
   ],
   "main": "video-overlay.html",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "YouTube",
+    "Vimeo"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
