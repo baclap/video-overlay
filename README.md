@@ -1,4 +1,4 @@
-# <video-overlay>
+# video-overlay
 
 The video-overlay element displays a thumbnail image for a video. When clicked it will open a modal overlaying the page with the YouTube or Vimeo hosted video in the center. The overlaying embed video will change size responsively for various screen sizes.
 
